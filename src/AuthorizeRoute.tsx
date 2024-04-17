@@ -7,7 +7,7 @@ import { authService } from 'partner-oidc-auth'
 export interface AuthorizeRouteProps {
   path: string | string[]
   component: ComponentType<any>
-  roles?: string[]
+  roles?: string[][]
 }
 interface AuthorizeRouteState {
   ready: boolean
@@ -58,7 +58,7 @@ export class AuthorizeRoute extends Component<AuthorizeRouteProps, AuthorizeRout
               }
               if (
                 this.props.roles &&
-                !this.props.roles.some((x) => this.state.roles.some((y) => y.toLowerCase() === x.toLowerCase()))
+                !this.props.roles.every(k=>k.some((x) => this.state.roles.some((y) => y.toLowerCase() === x.toLowerCase())))
               ) {
                 return <Redirect to={ApplicationPaths.AccessDenied} />
               } else {
