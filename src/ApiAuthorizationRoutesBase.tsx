@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router'
+import { Route } from 'react-router-dom'
 import { ApplicationPaths, LoginActions, LogoutActions } from 'partner-oidc-auth'
 
 /**
